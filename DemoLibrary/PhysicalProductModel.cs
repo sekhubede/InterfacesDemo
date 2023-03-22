@@ -8,9 +8,10 @@ using static System.Console;
 
 namespace DemoLibrary
 {
-    public class PhysicalProductModel
+    public class PhysicalProductModel : IProductModel
     {
         public string Title { get; set; }
+
         public bool HasOrderBeenCompleted { get; private set; }
 
         public void ShipItem(CustomerModel customer)
