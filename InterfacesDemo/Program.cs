@@ -14,9 +14,14 @@ namespace InterfacesDemo
             List<IProductModel> cart = AddSampleData();
             CustomerModel customer = GetCustomer();
 
-            foreach (PhysicalProductModel prod in cart)
+            foreach (IProductModel prod in cart)
             {
                 prod.ShipItem(customer);
+
+                if (prod is IDigitalProductModel digital)
+                {
+                    WriteLine($"For the {digital.Title} you have {digital.TotalDownloadsLeft} downloads.");
+                }
             }
 
             ReadLine();
@@ -41,6 +46,7 @@ namespace InterfacesDemo
             output.Add(new PhysicalProductModel { Title = "Nerf Football"});
             output.Add(new PhysicalProductModel { Title = "NamDev T-Shirt"});
             output.Add(new PhysicalProductModel { Title = "Hard Drive"});
+            output.Add(new DigitalProductModel { Title = "Lesson Source Code"});
 
             return output;
         }
