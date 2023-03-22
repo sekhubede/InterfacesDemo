@@ -1,6 +1,9 @@
 ﻿using System;
-
+using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using DemoLibrary;
+
+using static System.Console;
 
 namespace InterfacesDemo
 {
@@ -8,7 +11,38 @@ namespace InterfacesDemo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            List<PhysicalProductModel> cart = AddSampleData();
+            CustomerModel customer = GetCustomer();
+
+            foreach (PhysicalProductModel prod in cart)
+            {
+                prod.ShipItem(customer);
+            }
+
+            ReadLine();
+        }
+
+        private static CustomerModel GetCustomer()
+        {
+            return new CustomerModel
+            {
+                FirstName = "Michael",
+                LastName = "Sekhubede",
+                City = "Windhoek",
+                EmailAddress = "msekhubede@gmail.com",
+                PhoneNumber = "355-4593"
+            };
+        }
+
+        private static List<PhysicalProductModel> AddSampleData()
+        {
+            List<PhysicalProductModel> output = new List<PhysicalProductModel>();
+
+            output.Add(new PhysicalProductModel { Title = "Nerf Football"});
+            output.Add(new PhysicalProductModel { Title = "NamDev T-Shirt"});
+            output.Add(new PhysicalProductModel { Title = "Hard Drive"});
+
+            return output;
         }
     }
 }
