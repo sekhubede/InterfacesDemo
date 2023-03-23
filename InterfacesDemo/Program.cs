@@ -24,7 +24,8 @@ namespace InterfacesDemo
                 }
             }
 
-            ReadLine();
+            WriteLine("\nPress any key to exit...");
+            ReadKey(true);
         }
 
         private static CustomerModel GetCustomer()
@@ -43,10 +44,11 @@ namespace InterfacesDemo
         {
             List<IProductModel> output = new List<IProductModel>();
 
-            output.Add(new PhysicalProductModel { Title = "Nerf Football"});
-            output.Add(new PhysicalProductModel { Title = "NamDev T-Shirt"});
-            output.Add(new PhysicalProductModel { Title = "Hard Drive"});
-            output.Add(new DigitalProductModel { Title = "Lesson Source Code"});
+            output.Add(new PhysicalProductModel { Title = "Nerf Football" });
+            output.Add(new PhysicalProductModel { Title = "NamDev T-Shirt" });
+            output.Add(new PhysicalProductModel { Title = "Hard Drive" });
+            output.Add(new DigitalProductModel { Title = "Lesson Source Code" });
+            output.Add(new CourseProductModel { Title = ".Net Core Start to Finish"});
 
             return output;
         }
